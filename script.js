@@ -116,3 +116,51 @@ function launchConfetti() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }, 4000);
 }
+
+
+// === MODE TACTILE POUR MOBILE ===
+function isMobileDevice() {
+  return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+function initTouchMode() {
+  let selectedItem = null;
+  const items = document.querySelectorAll('.item');
+  const dropzones = document.querySelectorAll('.dropzone');
+
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      items.forEach(i => i.classList.remove('selected'));
+      selectedItem = item;
+      item.classList.add('selected');
+    });
+  });
+
+  dropzones.forEach(zone => {
+    zone.addEventListener('click', () => {
+      if (selectedItem) {
+        const existingItem = zone.querySelector('.item');
+        if (existingItem) {
+          document.getElementById('items').appendChild(existingItem);
+        }
+        zone.appendChild(selectedItem);
+        selectedItem.classList.remove('selected');
+        selectedItem = null;
+      }
+    });
+  });
+}
+
+// Appliquer le bon mode à la fin du DOMContentLoaded
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("items");
+  const items = Array.from(container.children);
+  items.sort(() => Math.random() - 0.5);
+  items.forEach(item => container.appendChild(item));
+
+  if (isMobileDevice()) {
+    initTouchMode();
+  } else {
+    initDragAndDrop();
+  }
+});

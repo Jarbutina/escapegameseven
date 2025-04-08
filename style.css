@@ -110,3 +110,9 @@ button {
   text-align: center;
   white-space: normal;
 }
+
+
+.item.selected {
+  border: 2px solid #f39c12;
+  background-color: #fffbe6;
+}
