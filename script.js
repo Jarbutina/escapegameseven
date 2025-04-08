@@ -1,6 +1,7 @@
-const items = document.querySelectorAll('.item');
+let items = Array.from(document.querySelectorAll('.item'));
 let draggedItem = null;
 
+shuffleArray(items);
 items.forEach(item => {
   item.addEventListener('dragstart', e => {
     draggedItem = item;
@@ -178,4 +179,13 @@ function showCorrectAnswers() {
 
   const descContainer = document.getElementById("descriptions-container");
   if (descContainer) descContainer.style.display = "block";
+}
+
+
+// Mélangeur de tableaux
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
 }

@@ -93,16 +93,23 @@ button {
 
 #descriptions-container {
   overflow-x: auto;
+  overflow-y: hidden;
   white-space: nowrap;
-  padding-bottom: 20px;
+  padding: 30px 10px;
+  box-sizing: border-box;
 }
+
 .plats-culture {
-  display: inline-flex;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   gap: 30px;
+  width: max-content;
 }
+
 .plat {
-  flex: 0 0 auto;
   width: 220px;
+  flex: 0 0 auto;
   text-align: center;
   white-space: normal;
 }
