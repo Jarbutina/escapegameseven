@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Associe les Plats à leur Région</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Associe chaque plat à sa région !</h1>
+  </header>
+
+  <div class="regions-row">
+    <div class="dropzone" data-answer="Poutargue"><div class="region-title">Provence</div></div>
+    <div class="dropzone" data-answer="Aligot"><div class="region-title">Occitanie</div></div>
+    <div class="dropzone" data-answer="Kig ha farz"><div class="region-title">Bretagne</div></div>
+    <div class="dropzone" data-answer="Piperade"><div class="region-title">Pays Basque</div></div>
+    <div class="dropzone" data-answer="Quenelle de brochet"><div class="region-title">Rhône-Alpes</div></div>
+  </div>
+
+  <div class="items-row" id="items">
+    <div class="item" draggable="true" id="Poutargue">Poutargue</div>
+    <div class="item" draggable="true" id="Aligot">Aligot</div>
+    <div class="item" draggable="true" id="Kig ha farz">Kig ha farz</div>
+    <div class="item" draggable="true" id="Piperade">Piperade</div>
+    <div class="item" draggable="true" id="Quenelle de brochet">Quenelle de brochet</div>
+  </div>
+
+  <button onclick="checkAnswers()">Valider</button>
+  <button onclick="resetGame()">Réinitialiser</button>
+
+  <canvas id="confetti-canvas"></canvas>
+  <div id="result"></div>
+
+  <img src="logo_seven_no_bg.png" alt="Logo Le Seven" id="logo">
+
+  <script src="script.js"></script>
+</body>
+</html>
