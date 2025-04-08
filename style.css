@@ -1,0 +1,115 @@
+body {
+  font-family: 'Georgia', serif;
+  background: #f8f1e4;
+  padding: 30px;
+  text-align: center;
+}
+h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+.regions-row, .items-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+.item, .dropzone {
+  border: 2px dashed #aaa;
+  padding: 12px;
+  min-width: 120px;
+  background: #fff7ed;
+  border-radius: 8px;
+  font-weight: bold;
+  user-select: none;
+}
+.item {
+  cursor: grab;
+}
+.dropzone {
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.region-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+button {
+  margin-top: 30px;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #d3a56c;
+  border: none;
+  border-radius: 6px;
+  color: white;
+}
+#result {
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.logo {
+  height: 200px;
+}
+
+#confetti-canvas {
+  position: fixed;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.plats-culture {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+.plat {
+  width: 220px;
+  text-align: center;
+}
+.plat img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+#descriptions-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding: 30px 10px;
+  box-sizing: border-box;
+}
+
+.plats-culture {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 30px;
+  width: max-content;
+}
+
+.plat {
+  width: 220px;
+  flex: 0 0 auto;
+  text-align: center;
+  white-space: normal;
+}
