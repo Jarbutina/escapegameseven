@@ -1,6 +1,7 @@
 
 function initDragAndDrop() {
   let draggedItem = null;
+  let touchMoved = false;
 
   const items = document.querySelectorAll('.item');
   const dropzones = document.querySelectorAll('.dropzone');
@@ -16,16 +17,22 @@ function initDragAndDrop() {
 
     item.addEventListener('touchstart', e => {
       draggedItem = item;
+      touchMoved = false;
     });
 
-    // Nouveau : si on clique/touche un item déjà déposé, il revient en bas
-    item.addEventListener('click', () => {
-      if (item.parentElement !== startZone) {
+    item.addEventListener('touchmove', e => {
+      touchMoved = true;
+    });
+
+    item.addEventListener('touchend', e => {
+      if (!touchMoved && item.parentElement !== startZone) {
         startZone.appendChild(item);
+        draggedItem = null;
       }
     });
 
-    item.addEventListener('touchend', () => {
+    item.addEventListener('click', () => {
+      // Pour les clics souris classiques (PC)
       if (item.parentElement !== startZone) {
         startZone.appendChild(item);
       }
@@ -51,7 +58,7 @@ function initDragAndDrop() {
       if (draggedItem) {
         const existingItem = zone.querySelector('.item');
         if (existingItem) startZone.appendChild(existingItem);
-        zone.appendChild(draggedItem);
+        e.currentTarget.appendChild(draggedItem);
         draggedItem = null;
       }
     });
