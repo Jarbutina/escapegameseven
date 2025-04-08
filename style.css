@@ -80,16 +80,10 @@ button {
   gap: 30px;
   margin-top: 30px;
 }
-.plat {
-  width: 220px;
+.plat { width: 160px;
   text-align: center;
 }
-.plat img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
+.plat img { width: 80%; height: auto; border-radius: 10px; margin-bottom: 10px; display: block; margin-left: auto; margin-right: auto; }
 
 #descriptions-container {
   overflow-x: auto;
@@ -107,8 +101,7 @@ button {
   width: max-content;
 }
 
-.plat {
-  width: 220px;
+.plat { width: 160px;
   flex: 0 0 auto;
   text-align: center;
   white-space: normal;
