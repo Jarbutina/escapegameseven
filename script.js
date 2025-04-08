@@ -153,3 +153,29 @@ function launchConfetti() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }, 4000);
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const descContainer = document.getElementById("descriptions-container");
+  if (descContainer) descContainer.style.display = "none";
+});
+
+function showCorrectAnswers() {
+  dropzones.forEach(zone => {
+    const correct = zone.dataset.answer;
+    let answerElem = zone.querySelector('.correct-answer');
+
+    if (!answerElem) {
+      answerElem = document.createElement('div');
+      answerElem.className = 'correct-answer';
+      answerElem.style.marginTop = '5px';
+      answerElem.style.fontSize = '12px';
+      answerElem.style.color = '#555';
+      zone.appendChild(answerElem);
+    }
+
+    answerElem.textContent = "✔ Réponse : " + correct;
+  });
+
+  const descContainer = document.getElementById("descriptions-container");
+  if (descContainer) descContainer.style.display = "block";
+}
