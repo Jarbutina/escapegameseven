@@ -6,8 +6,7 @@ function initDragAndDrop() {
   const dropzones = document.querySelectorAll('.dropzone');
   const startZone = document.getElementById('items');
 
-  // Drag and drop classique
-  items.forEach(item => {
+  function makeItemDraggable(item) {
     item.setAttribute('draggable', true);
 
     item.addEventListener('dragstart', e => {
@@ -15,11 +14,25 @@ function initDragAndDrop() {
       e.dataTransfer.setData("text/plain", item.id);
     });
 
-    // Gestion tactile
     item.addEventListener('touchstart', e => {
       draggedItem = item;
     });
-  });
+
+    // Nouveau : si on clique/touche un item déjà déposé, il revient en bas
+    item.addEventListener('click', () => {
+      if (item.parentElement !== startZone) {
+        startZone.appendChild(item);
+      }
+    });
+
+    item.addEventListener('touchend', () => {
+      if (item.parentElement !== startZone) {
+        startZone.appendChild(item);
+      }
+    });
+  }
+
+  items.forEach(item => makeItemDraggable(item));
 
   dropzones.forEach(zone => {
     zone.addEventListener('dragover', e => e.preventDefault());
@@ -34,7 +47,6 @@ function initDragAndDrop() {
       }
     });
 
-    // Support tactile
     zone.addEventListener('touchend', e => {
       if (draggedItem) {
         const existingItem = zone.querySelector('.item');
@@ -45,7 +57,6 @@ function initDragAndDrop() {
     });
   });
 
-  // Zone de départ (replacer les plats)
   startZone.addEventListener('dragover', e => e.preventDefault());
   startZone.addEventListener('drop', e => {
     e.preventDefault();
